@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 import express from 'express';
+import path from 'path';
 import routes from './routes';
 
 import './database';
@@ -16,6 +17,10 @@ class App {
   // Thats a middleware which makes server handling json files
   middlewares() {
     this.server.use(express.json());
+    this.server.use(
+      '/files',
+      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+    );
   }
 
   // We're going to import all of the routes from file routes.js
