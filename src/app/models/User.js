@@ -25,6 +25,12 @@ class User extends Model {
     return this;
   }
 
+  static associate(models) {
+    // user module belongs to file module
+    // avatar_id will be insert on users table
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
