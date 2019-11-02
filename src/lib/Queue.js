@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Queue from 'bee-queue';
 import CancellationMail from '../app/jobs/CancellationMail';
 import redisConfig from '../config/redis';
