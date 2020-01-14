@@ -10,7 +10,7 @@ export default async (req, res, next) => {
     return res.status(401).json({ error: 'Token not provided' });
   }
 
-  // We use unstruction to catch only the token from authorization's headers
+  // We use unstructution to catch only the token from authorization's headers
   const [, token] = authHeader.split(' ');
 
   try {

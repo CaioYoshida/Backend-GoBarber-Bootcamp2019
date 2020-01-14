@@ -3,6 +3,7 @@ import 'dotenv/config';
 
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
 import sentryConfig from './config/sentry';
@@ -26,6 +27,7 @@ class App {
   // Thats a middleware which makes server handling json files
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
+    this.server.use(cors());
     this.server.use(express.json());
     this.server.use(
       '/files',
@@ -47,7 +49,7 @@ class App {
         return res.status(500).json(errors);
       }
 
-      return res.status(500).json({error: 'Internal Server Error'});
+      return res.status(500).json({ error: 'Internal Server Error' });
     });
   }
 }

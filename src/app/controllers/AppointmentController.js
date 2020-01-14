@@ -154,6 +154,10 @@ class AppointmentController {
       ],
     });
 
+    if (!appointment) {
+      return res.status(401).json({ error: `This appointment doesn't exists` });
+    }
+
     if (appointment.user_id !== req.userId) {
       return res
         .status(401)
